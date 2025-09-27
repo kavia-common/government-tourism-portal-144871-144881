@@ -1,13 +1,14 @@
 {
-    "name": "minimal-express-app",
+    "name": "government-tourism-portal-backend",
     "version": "1.0.0",
-    "description": "Minimal Express app with scalable structure",
+    "description": "Express backend for Government Tourism Portal with in-memory data and Swagger docs",
     "main": "src/server.js",
     "scripts": {
         "start": "node src/server.js",
         "dev": "nodemon src/server.js",
         "test": "jest",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "openapi:generate": "node generate_openapi.js"
     },
     "dependencies": {
         "cors": "2.8.5",

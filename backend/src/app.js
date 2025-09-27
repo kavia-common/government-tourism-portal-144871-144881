@@ -35,7 +35,11 @@ app.use('/docs', swaggerUi.serve, (req, res, next) => {
       },
     ],
   };
-  swaggerUi.setup(dynamicSpec)(req, res, next);
+  swaggerUi.setup(dynamicSpec, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    }
+  })(req, res, next);
 });
 
 // Parse JSON request body
