@@ -23,11 +23,26 @@ Express.js backend providing REST APIs for:
 4. Production run
    npm start
 
-Server will listen on HOST:PORT. By default PORT=4000, but many orchestrators and the paired frontend expect the backend on port 3001. Set PORT=3001 in your .env to match that expectation.
+Server will listen on HOST:PORT. Defaults are HOST=0.0.0.0 and PORT=3001 to match the project requirements and frontend integration.
 
 Health endpoints:
 - GET / (root service descriptor)
 - GET /api/health (liveness/readiness)
+
+## Configuration
+
+- HOST (default 0.0.0.0)
+- PORT (default 3001)
+- CORS_ORIGINS (default http://localhost:3000 for the React frontend)
+- OTP_TTL_SECONDS (default 300)
+- BLOCKCHAIN_NETWORK (default polygon-mumbai)
+
+See .env.example for details.
+
+## CORS
+
+CORS is configured to allow requests from the React frontend. To change allowed origins, set CORS_ORIGINS in .env as a comma-separated list, e.g.:
+CORS_ORIGINS=http://localhost:3000,https://preview.example.com
 
 ## Auth
 

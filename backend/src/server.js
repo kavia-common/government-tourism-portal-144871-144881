@@ -3,9 +3,8 @@ import app from './app.js';
 
 dotenv.config();
 
-// Prefer PORT from env (orchestrators often expect 3001). Default remains 4000 for local runs.
-const PORT = Number(process.env.PORT) || 4000;
-// Bind to 0.0.0.0 by default to ensure containerized environments expose the port properly.
+// Enforced defaults for this project
+const PORT = Number(process.env.PORT) || 3001;
 const HOST = process.env.HOST || '0.0.0.0';
 
 // Start server and add basic diagnostics for readiness issues

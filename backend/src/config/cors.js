@@ -1,7 +1,14 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-const allowedOrigins = (process.env.CORS_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+// Default to allowing http://localhost:3000 if CORS_ORIGINS is not provided
+const defaultOrigins = ['http://localhost:3000'];
+const configured = (process.env.CORS_ORIGINS || '')
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+
+const allowedOrigins = configured.length > 0 ? configured : defaultOrigins;
 
 export const corsConfig = {
   origin: function (origin, callback) {
