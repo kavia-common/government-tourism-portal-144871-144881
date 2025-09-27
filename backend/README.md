@@ -15,15 +15,19 @@ Express.js backend providing REST APIs for:
 
 2. Setup environment
    cp .env.example .env
-   # Edit .env if needed
+   # Edit .env if needed (PORT, HOST, CORS_ORIGINS, etc.)
 
 3. Run in development
    npm run dev
 
-4. Production build (simple)
+4. Production run
    npm start
 
-Server will listen on PORT (default 4000).
+Server will listen on HOST:PORT. By default PORT=4000, but many orchestrators and the paired frontend expect the backend on port 3001. Set PORT=3001 in your .env to match that expectation.
+
+Health endpoints:
+- GET / (root service descriptor)
+- GET /api/health (liveness/readiness)
 
 ## Auth
 
@@ -79,3 +83,4 @@ Server will listen on PORT (default 4000).
 - All data stores are in-memory for demo purposes.
 - OTP and Blockchain are simulated.
 - CORS origins configured via CORS_ORIGINS in .env
+- If the backend doesn’t appear to start, ensure no other process is using the configured PORT and that HOST is set to 0.0.0.0 in containerized environments.
